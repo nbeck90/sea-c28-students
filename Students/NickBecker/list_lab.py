@@ -145,6 +145,6 @@ def rev_list(mylist):
 print rev_list(fruits_copy)
 print fruits
 
-fruits.remove("Peaches")
+fruits.pop()
 print fruits
 print rev_list(fruits_copy)
