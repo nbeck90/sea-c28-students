@@ -67,7 +67,7 @@ for items in fruits:
 
 print fruits
 
-#Part 3 of the list_lab (Do you like?: yes or no)
+#Part 3 of list_lab (Do you like?: yes or no)
 
 print fruits
 
@@ -130,3 +130,21 @@ while True:
         print "Please answer yes or no"
 
 print fruits
+
+#Part 4 of list_lab: copying lists, reversing letters, deleting
+
+fruits_copy = list(fruits)
+
+def rev_list(mylist):
+    new_list = []
+    for items in mylist:
+        items = items[::-1]
+        new_list.append(items)
+    print new_list
+
+print rev_list(fruits_copy)
+print fruits
+
+fruits.remove("Peaches")
+print fruits
+print rev_list(fruits_copy)
