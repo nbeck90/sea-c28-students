@@ -118,7 +118,7 @@ print fruits
 
 while True:
     peaches_ans = raw_input("Do you like peaches?: ")
-    if peaches_ans.lower() == "yes":
+    if peaches_ans.lower() == "yes" and "Peaches" is in fruits:
         print "Great!"
         pass
         break
