@@ -26,11 +26,8 @@ print hex_dict
 
 new_dict = {"name": "Chris", "city": "Seattle", "cake": "Chocolate"}
 
-for value in new_dict.itervalues():
-    if "a" in value:
-        new_dict[value] = "1"                             #LOOK AT THIS SECTION, REPLACING As
-    else:
-        pass
+for key in new_dict:
+    new_dict[key] = new_dict[key].count("a")
 
 print new_dict
 
