@@ -5,7 +5,7 @@ food_prefs = {"name": u"Cris",
               u"salad": u"chop",
               u"pasta": u"lasagna"}
 
-print "{name} is from {city}, and he likes {cake}, {fruit}, {salad}, and {pasta}".format(**food_prefs)
+print "{name} is from {city}, and he likes {cake} cake, {fruit} fruit, {salad} salad, and {pasta} pasta".format(**food_prefs)
 
 #Add in keys from values!
 
@@ -36,6 +36,4 @@ s4 = {nums for nums in range(21) if nums % 4 == 0}
 
 print s4
 
-sets = set(range(21))
 
-#Add in final set!
