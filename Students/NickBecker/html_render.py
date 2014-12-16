@@ -41,10 +41,12 @@ class Element(list):
             except AttributeError:
                 file_out.write("{}{}{}\n".format(ind,
                                                  self.indent,
-                                                 line))
+                                                 line)
+                              )
         file_out.write("{}{}</{}>\n".format(ind,
                                             self.indent,
-                                            self.html_tag))
+                                            self.html_tag)
+                      )
 
 
 # reload(hr)
@@ -121,10 +123,12 @@ class Html(Element):
             except AttributeError:
                 file_out.write("{}{}{}\n".format(ind,
                                                  self.indent,
-                                                 line))
+                                                 line)
+                              )
         file_out.write("{}{}</{}>\n".format(ind,
                                             self.indent,
-                                            self.html_tag))
+                                            self.html_tag)
+                      )
 
 
 class Title(OneLineTag):
