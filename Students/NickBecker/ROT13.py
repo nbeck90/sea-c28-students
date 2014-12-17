@@ -1,10 +1,5 @@
-response = raw_input("Please enter your text: ")
-
-
 def rot13(to_rot):
     return to_rot.encode('rot_13')
-
-print "Your new text is %s" % rot13(response)
 
 
 if __name__ == '__main__':
