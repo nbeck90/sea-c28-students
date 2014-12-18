@@ -11,11 +11,12 @@ if __name__ == "__main__":
             my_file.write(lines.strip())
 
     while True:
-        selection = raw_input("Please type 'N' to write to a new file or 'O' to write over the current file: ")
+        selection = raw_input("Please type 'N' to write to a new file\
+                              or 'O' to write over the current file: ")
 
         if selection.lower() == "n":
             print "Making a new file without leading/trailing whitespace"
-            newfile = codecs.open("%s_clean.txt" % str(my_file), 'w')
+            codecs.open("{}_clean.txt".format(str(my_file)), 'w')
             cleaning(codecs.open(my_file))
 
         elif selection.lower() == "o":
