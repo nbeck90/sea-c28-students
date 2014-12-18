@@ -17,7 +17,7 @@ class Element(list):
         attribute_list = []
         if self.attribute:
             for key, value in self.attribute.items():
-                attribute_list.append("{}={}".format(key, value))
+                attribute_list.append('{}="{}"'.format(key, value))
         file_out.write("{}<{} {}>\n".format(ind,
                                             self.html_tag,
                                             " ".join(attribute_list)))
