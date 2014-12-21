@@ -3,7 +3,7 @@ def generate_sum(start=1, stop=200, step=1):
     i = start
     while i < stop:
         yield i
-        step = step + i
+        step = step + 1
         i += step
 
 
