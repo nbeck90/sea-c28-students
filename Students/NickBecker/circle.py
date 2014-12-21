@@ -29,3 +29,30 @@ class Circle(object):
     radius = property(get_radius, set_radius)
     diameter = property(get_diameter, set_diameter)
     area = property(get_area)
+
+    def __str__(self):
+        return "Circle with radius: {}.000000".format(self.radius)
+
+    def __repr__(self):
+        return "Circle({})".format(self.radius)
+
+    def __add__(self, other):
+        return Circle(self.radius + other.radius)
+
+    def __mul__(self, other):
+        return Circle(self.radius * other)
+
+    def __lt__(self, other):
+        return self.radius < other.radius
+
+    def __le__(self, other):
+        return self.radius <= other.radius
+
+    def __eq__(self, other):
+        return self.radius == other.radius
+
+    def __gt__(self, other):
+        return self.radius > other.radius
+
+    def __ge__(self, other):
+        return self.radius >= other.radius
