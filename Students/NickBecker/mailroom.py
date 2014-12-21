@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from safe_input import safe_input
 
 Donors = {
@@ -25,106 +27,100 @@ def thank_you(name, amount):
 
 def create():
     """Create a report based on amounts given by each donor"""
-    for names in Donors:
-        print names, Donors[names], sum(Donors[names])
+    print "\n"
+    for name in Donors:
+        print name, (Donors[name]), sum(Donors[name])
+    print "\n"
 
-    print '\n\nDonor\t\t\t\tAmount\t\tNumber of Donations\t\tAverage Donation'
-    print '-----\t\t\t\t------\t\t-------------------\t\t----------------'
+    title = [u"{:20}".format(u"Name")]
+    title.append(u"{:12}".format(u"Total"))
+    title.append(u"{:14}{:12}".format(u"Donations", u"Average"))
+    print u" ".join(title)
 
     sorting = list()
     for name in Donors:
         sorting.append(name)
 
     for donor_name in sorted(sorting, key=lambda individual: sum(Donors[individual]), reverse=True):
-        print donor_name,
-        if len(donor_name) < 10:
-            print "\t\t\t",
-        else:
-            print "\t\t",
-        print sum(Donors[donor_name]),
-        print "\t\t\t",
-        if len(Donors[donor_name]) > 0:
-            print len(Donors[donor_name]),
-            print "\t\t\t",
-            print sum(Donors[donor_name]) / len(Donors[donor_name])
-        else:
-            print "0\t\tNA"
+        print "{: <20}".format(donor_name),
+        print "{: <16}".format(sum(Donors[donor_name])),
+        print "{: <9}".format(len(Donors[donor_name])),
+        print "{: <11}".format(sum(Donors[donor_name]) / len(Donors[donor_name]))
     print "\n\n\n\n"
-    print "Send a Thank You"
-    print "Create a Report"
-    print "Quit"
+    print "Send a Thank You (S)"
+    print "Create a Report (C)"
+    print "Quit (Q)"
 
 
-def new_donor(name):
+def new_donation(name):
     """Create a new donor and input a value, or add a value to an existing donor"""
     donations = []
     total = 0
     while total >= 0:
-        new_donation = safe_input("Please enter a donation or type -1 to move back: ")
+        new_donation = safe_input("Please enter a donation or type B to move back: ")
         if new_donation.lower() == "quit":
             main_menu()
-        else:
-            pass
+        elif new_donation.lower() == "b":
+            total = -1
         try:
             total = int(new_donation)
             if total > 0:
                 donations.append(total)
-        except ValueError:
-                print "Please input a number"
-                total = 0
+        except:
+            total = 0
         if name not in Donors:
             Donors[name] = donations
+            total = -1
+        elif new_donation.lower() == "b":
             total = -1
         else:
             Donors[name] = donations + Donors[name]
             total = -1
-    letter = safe_input("Would you like to print this letter?: ")
-    if letter.lower() == "yes":
+    letter = safe_input("Would you like to print this letter? (Y/N): ")
+    if letter.lower() == "y":
         print thank_you(name, Donors[name])
     elif letter.lower() == "quit":
         main_menu()
-    else:
-        pass
 
 
 def list_donors():
     """List all current donors and their donation amounts"""
     for key in Donors:
         print key, Donors[key]
+    print "\n"
 
 
 def main_menu():
     """Main hub for moving between writing a thank you or creating a report"""
-    print "Send a Thank You"
-    print "Create a Report"
-    print "Quit"
+    print "Send a Thank You (S)"
+    print "Create a Report (C)"
+    print "Quit (Q)"
     while True:
         main_menu = safe_input("Choose an option from above: ")
-        if main_menu.lower() == "quit":
+        if main_menu.lower() == "q":
             break
-        elif main_menu.lower() == "create a report":
+        elif main_menu.lower() == "c":
             create()
-        elif main_menu.lower() == "send a thank you":
-            ThankYou = True
-            while ThankYou:
-                print "List Donors"
+        elif main_menu.lower() == "s":
+            while True:
+                print "List Donors (L)"
                 print "Enter a Donor Name"
-                print "Return to Main Menu"
+                print "Return to Main Menu (R)"
                 thanks_choice = safe_input("Please choose from above: ")
-                if thanks_choice.lower() == "list donors":
+                if thanks_choice.lower() == "l":
                     list_donors()
-                elif thanks_choice.lower() == "quit":
-                    print "Send a Thank You"
-                    print "Create a Report"
-                    print "Quit"
-                    ThankYou = False
-                elif thanks_choice.lower() == "return to main menu":
-                    ThankYou = False
-                    print "Send a Thank You"
-                    print "Create a Report"
-                    print "Quit"
+                elif thanks_choice.lower() == "q":
+                    print "Send a Thank You (S)"
+                    print "Create a Report (C)"
+                    print "Quit (Q)"
+                    break
+                elif thanks_choice.lower() == "r":
+                    print "Send a Thank You (S)"
+                    print "Create a Report (C)"
+                    print "Quit (Q)"
+                    break
                 else:
-                    new_donor(thanks_choice)
+                    new_donation(thanks_choice)
         else:
             print "Please reselect"
 
