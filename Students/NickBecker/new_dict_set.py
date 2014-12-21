@@ -9,11 +9,11 @@ print "{name} is from {city}, and he likes {cake} cake, {fruit} fruit, {salad} s
 
 #Add in keys from values!
 
-bin_list = [x for x in range(16)]
+hex_list = dict((num, hex(num)) for num in range(16))
 
-hex_list = [chr(x) for x in range(16)]
+print hex_list
 
-hex_dict = {bin_num: hex_num for bin_num, hex_num in zip(bin_list, hex_list)}
+hex_dict = {item: hex(item) for item in range(16)}
 
 print hex_dict
 
