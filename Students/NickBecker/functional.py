@@ -16,14 +16,16 @@ if __name__ == "__main__":
 
         if selection.lower() == "n":
             print "Making a new file without leading/trailing whitespace"
-            codecs.open("{}_clean.txt".format(str(my_file)), 'w')
-            cleaning(codecs.open(my_file))
+            new_file = codecs.open("{}_clean.txt".format(my_file), 'w')
+            new_file.cleaning(my_file)
+            new_file.close()
 
         elif selection.lower() == "o":
             print "Deleting trailing/leading whitespace of he current file"
             cleanfile = codecs.open(my_file, 'r+')
             cleanfile.seek(0)
             cleaning(cleanfile)
+            cleanfile.close()
             break
         else:
             print "Please select a valid option"
